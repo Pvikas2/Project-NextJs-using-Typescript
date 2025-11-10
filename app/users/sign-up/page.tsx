@@ -13,7 +13,7 @@ export default function SignupPage() {
   const rotateX = useTransform(y, [-100, 100], [8, -8]);
   const rotateY = useTransform(x, [-100, 100], [-8, 8]);
 
-  function handleMouseMove(e) {
+  function handleMouseMove(e: MouseEvent) {
     const { innerWidth, innerHeight } = window;
     const offsetX = e.clientX - innerWidth / 2;
     const offsetY = e.clientY - innerHeight / 2;
@@ -96,7 +96,7 @@ export default function SignupPage() {
               type="text"
               placeholder="Full Name"
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFullName(e.target.value)}
               className="p-3 rounded-xl bg-white text-black border border-gray-400 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
               required
             />
@@ -107,7 +107,7 @@ export default function SignupPage() {
               type="email"
               placeholder="Email Address"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               className="p-3 rounded-xl bg-white text-black border border-gray-400 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
               required
             />
@@ -118,7 +118,7 @@ export default function SignupPage() {
               type="password"
               placeholder="Create Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               className="p-3 rounded-xl bg-white text-black border border-gray-400 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
               required
             />
