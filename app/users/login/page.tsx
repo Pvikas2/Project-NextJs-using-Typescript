@@ -16,17 +16,26 @@ export default function LoginPage() {
 
   // Track mouse position globally
   useEffect(() => {
+    if (typeof window === "undefined") return; // ✅ Prevent SSR issues
+  
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
-
+  
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+  
 
   // Convert to small movement offsets
-  const offsetX = (mousePos.x / window.innerWidth - 0.5) * 20;
-  const offsetY = (mousePos.y / window.innerHeight - 0.5) * 20;
+  let offsetX = 0;
+  let offsetY = 0;
+  
+  if (typeof window !== "undefined") {
+    offsetX = (mousePos.x / window.innerWidth - 0.5) * 20;
+    offsetY = (mousePos.y / window.innerHeight - 0.5) * 20;
+  }
+  
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gradient-to-br from-cyan-50 via-white to-teal-100 overflow-hidden">
