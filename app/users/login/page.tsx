@@ -16,15 +16,16 @@ export default function LoginPage() {
 
   // Track mouse position globally
   useEffect(() => {
-    if (typeof window === "undefined") return; // ✅ Prevent SSR issues
+    if (typeof window === "undefined") return;
   
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
   
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+  
   
 
   // Convert to small movement offsets
