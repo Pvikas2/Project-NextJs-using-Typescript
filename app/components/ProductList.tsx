@@ -1,10 +1,10 @@
-"use client";  // 👈 add this line at the top!
+"use client";
 
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import styles from "./ProductList.module.css";
 
-interface Product {
+interface ProductApi {
   id: number;
   title: string;
   price: number;
@@ -14,7 +14,7 @@ interface Product {
 }
 
 export default function ProductList() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductApi[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,10 +43,7 @@ export default function ProductList() {
             id: product.id,
             name: product.title,
             price: product.price,
-            image:
-              product.images && product.images.length > 0
-                ? product.images[0]
-                : product.thumbnail,
+            image: product.images?.length ? product.images[0] : product.thumbnail,
           }}
         />
       ))}

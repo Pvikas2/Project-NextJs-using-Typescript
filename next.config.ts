@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "pngimg.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.dummyjson.com",
+      },
     ],
   },
 };
