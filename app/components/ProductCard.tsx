@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useCartStore } from "@/store/cartStore";
 import styles from "./ProductCard.module.css";
 
 interface Product {
@@ -11,18 +13,46 @@ interface Product {
 }
 
 export default function ProductCard({ product }: { product: Product }) {
+  const addToCart = useCartStore((state) => state.addToCart);
+
   return (
     <motion.div
       className={styles.card}
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300 }}
+      whileHover={{ scale: 1.03 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
     >
-      <img src={product.image} alt={product.name} className={styles.image} />
+      <motion.img
+        src={product.image}
+        alt={product.name}
+        className={styles.image}
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.3 }}
+      />
+
       <h3>{product.name}</h3>
-      <p>${product.price}</p>
+      <p className={styles.price}>${product.price}</p>
+
       <div className={styles.buttons}>
-        <button>Add to Cart</button>
-        <button>See Details</button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.9 }}
+          className={styles.addBtn}
+          onClick={() => addToCart(product)}
+        >
+          Add to Cart
+        </motion.button>
+
+        <Link href={`/users/products/${product.id}`}>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className={styles.viewBtn}
+          >
+            View Details
+          </motion.button>
+        </Link>
       </div>
     </motion.div>
   );

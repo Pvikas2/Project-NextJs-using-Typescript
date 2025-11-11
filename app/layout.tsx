@@ -1,4 +1,5 @@
 import Footer from "./components/Footer";
+import GlobalLoader from "./components/GlobalLoader";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <GlobalLoader />
         <Navbar />
         <main>{children}</main>
         <Footer />
