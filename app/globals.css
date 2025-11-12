@@ -19,9 +19,30 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-
+/* Make the layout take the full viewport height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+/* Flexbox layout for header-content-footer */
+body.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full height of the screen */
+}
+
+/* Let main take remaining space */
+main.content {
+  flex: 1;
+}
+
+/* Example footer styling */
+footer {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
