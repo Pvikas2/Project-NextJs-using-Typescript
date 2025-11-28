@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: #111;
   color: white;
-  padding: 0.8rem 2rem;
+  padding: 0.8rem 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
@@ -99,4 +99,77 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* MOBILE MENU BUTTON (top-right) */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* MOBILE MENU DROPDOWN */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #111;
+  padding: 1rem 2rem;
+  gap: 1.4rem;
+  position: absolute;
+  top: 61.58px; /* same navbar height */
+  right: 0;
+  z-index: 200;
+}
+
+.mobileMenu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.mobileCart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobileRight {
+  display: none; /* hidden by default */
+  align-items: center;
+  gap: 1rem;
+}
+
+/* SHOW/HIDE FOR MOBILE */
+@media (max-width: 768px) {
+  @media (max-width: 768px) {
+    .links,
+    .authButtons {
+      display: none;
+    }
+  
+    /* show mobile right section */
+    .mobileRight {
+      display: flex;
+      margin-left: auto;
+    }
+  
+    /* menu button inside mobileRight → no absolute!! */
+    .menuButton {
+      display: block;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      position: static; /* FIXED: prevent breaking flex */
+      transform: none;  /* FIXED */
+    }
+  
+    /* cart icon in mobile */
+    .cartIcon {
+      position: relative;
+    }
+  }  
 }
